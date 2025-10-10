@@ -28,3 +28,9 @@ tr:nth-child(even){
 .btn:hover{
     box-shadow: 2px 2px 2px #888888;
 }
+#btn-viewOne{
+    background-color: #4CAF50;
+}
+#btn-deleteOne{
+    background-color: red;
+}

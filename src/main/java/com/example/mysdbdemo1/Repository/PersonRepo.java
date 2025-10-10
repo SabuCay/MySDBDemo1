@@ -27,14 +27,19 @@ public class PersonRepo {
     }
 
     public Person findPersonById(int id){
-        return null;
+        String sql = "SELECT * FROM person WHERE id = ?";
+        RowMapper<Person> rowMapper = new BeanPropertyRowMapper<>(Person.class);
+        Person p = template.queryForObject(sql, rowMapper, id);
+        return p;
     }
 
     public Boolean deletePerson(int id){
-        return null;
+        String sql = "DELETE FROM person WHERE id = ?";
+        return template.update(sql, id) > 0;
     }
 
     public void updatePerson(Person person){
-
+        String sql = "UPDATE person SET first_name = ?, last_name = ? WHERE id = ?";
+        template.update(sql, person.getFirst_name(), person.getLast_name(), person.getId());
     }
 }
